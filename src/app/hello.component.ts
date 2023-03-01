@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FilterComponent } from './filter.component';
+import {Component, Input, OnInit } from '@angular/core';
 import { UserService } from './user.service';
 
 @Component({
@@ -7,7 +6,7 @@ import { UserService } from './user.service';
   template: `
  
  
-  <div class="container"> Value from user dropdown using sunject {{dropdownValue}}</div>
+  <div class="container" *ngIf="dropdownValue"> Value from user dropdown using sunject {{dropdownValue | json}}</div>
   <div id="app" class="container">
   <div class="user-list">
   <div class="user-item" *ngFor="let user of users | filter: search">
