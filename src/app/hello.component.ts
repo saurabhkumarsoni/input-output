@@ -1,12 +1,13 @@
-import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FilterComponent } from './filter.component';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-hello',
   template: `
  
  
-
+  <div class="container"> Value from user dropdown using sunject {{dropdownValue}}</div>
   <div id="app" class="container">
   <div class="user-list">
   <div class="user-item" *ngFor="let user of users | filter: search">
@@ -45,14 +46,18 @@ import { FilterComponent } from './filter.component';
   `,
  
 })
-export class HelloComponent {
+export class HelloComponent implements OnInit {
  
   @Input() users: any;
   @Input() search: string;
-  @ViewChild('filterComponent') child: FilterComponent;
+  dropdownValue: any;
 
-  // ngAfterViewInit(){
-  //   console.log('hhhh')
-  //  this.search =  this.child.searchTerm;
-  // }
+  constructor(private userService: UserService){}
+
+
+  ngOnInit(){
+    this.userService.selectedObject.subscribe((res) =>{
+      this.dropdownValue = res;
+    })
+  }
 }

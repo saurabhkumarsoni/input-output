@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-user-dropdown',
   template: `Select value : <select (change)="handleChange($event)"
   name="cmbTipoTexto"
   class="form-control form-control-sm col-sm-7" 
-  id="cmbTipoTexto"
+  id="cmbTipoTexto" [disabled]="!users"
   >
   <option *ngFor="let item of textTypes" 
           [value]="item.id">{{item.value}}</option>
 </select>`,
 })
 export class UserDropDownComponent  {
+  constructor(private userService: UserService){}
+
+  @Input() users: any;
   name = 'Angular';
   selectedObject;
   textTypes = [
@@ -23,8 +27,8 @@ export class UserDropDownComponent  {
 
   ]
 
-  handleChange(index) {
-    console.log(this.textTypes[index]);
-    this.selectedObject = this.textTypes[index];
+  handleChange(event) {
+    this.selectedObject = this.textTypes[event.target.value];    
+    this.userService.selectedObject.next(this.selectedObject);
   }
 }

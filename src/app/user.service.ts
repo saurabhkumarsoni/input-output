@@ -7,6 +7,9 @@ import { Subject } from 'rxjs';
 })
 export class UserService {
 
+
+  selectedObject = new Subject();
+
   constructor(private http: HttpClient) { }
 
   getAllUser(){
