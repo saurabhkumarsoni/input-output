@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'my-app-user-dropdown',
-  template: `Select value : <select (change)="handleChange($event.target.selectedIndex)"
+  selector: 'app-user-dropdown',
+  template: `Select value : <select (change)="handleChange($event)"
   name="cmbTipoTexto"
   class="form-control form-control-sm col-sm-7" 
   id="cmbTipoTexto"

@@ -8,11 +8,12 @@ import { FilterComponent } from './filter.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './filter.pipe';
+import { UserDropDownComponent } from './userDropdown.component';
 
 
 @NgModule({
   imports: [BrowserModule, HttpClientModule, FormsModule],
-  declarations: [AppComponent, HelloComponent, ButtonComponent, FilterComponent, FilterPipe],
+  declarations: [AppComponent, HelloComponent, ButtonComponent, FilterComponent, FilterPipe, UserDropDownComponent],
   providers:[],
   bootstrap: [AppComponent],
 })
